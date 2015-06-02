@@ -1,6 +1,6 @@
 class Restaurant
 
-  attr_accessor  :basket
+  attr_accessor  :basket, :bill, :receipt
   attr_reader  :menu
 
   def initialize
@@ -13,16 +13,22 @@ class Restaurant
             }
       @basket = []
       @bill = []
+      @receipt = 0
   end
 
   def select_dish(dish, quantity=1)
     quantity.times do
-      @basket << menu.select {|key| key == dish }
+      basket << menu.select {|key| key == dish }
     end
   end
 
   def bill_total
-    @bill = @basket.map { |x| x.values }.flatten.inject(:+)
+    bill = basket.map { |x| x.values }.flatten.inject(:+)
+  end
+
+  def receipt
+    basket << "Total amount = £#{bill_total}"
+    return basket
   end
 
 end
