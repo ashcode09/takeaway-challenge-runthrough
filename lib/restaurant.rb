@@ -1,7 +1,9 @@
+require_relative 'twillio'
+
 class Restaurant
 
   attr_accessor  :basket, :bill, :receipt
-  attr_reader  :menu
+  attr_reader  :menu, :message
 
   def initialize
      @menu = { "lasagne" => 10.00,
@@ -14,6 +16,7 @@ class Restaurant
       @basket = []
       @bill = []
       @receipt = 0
+      @twillio = Twillio.new
   end
 
   def select_dish(dish, quantity=1)
@@ -29,6 +32,11 @@ class Restaurant
   def receipt
     basket << "Total amount = £#{bill_total}"
     return basket
+  end
+
+  def send_text
+    @twillio.message
+
   end
 
 end
