@@ -27,4 +27,12 @@ feature 'Takeaway' do
     expect(restaurant.receipt).to eq [{"pizza" => 11.5}, {"pizza" => 11.5}, "Total amount = £23.0"]
   end
 
+  # scenario 'restaurant can send a text to customer to confirm order' do
+  #   twilio = double :twilio
+  #   allow(twilio).to receive(:send_text).with(any_args)
+  #   restaurant.select_dish('pizza', 2)
+  #   restaurant.receipt
+  #   expect(twilio).to respond_with("Thank you! Your order was placed and will be delivered before #{(Time.now + (60*60)).asctime}")
+  # end
+
 end

@@ -16,7 +16,7 @@ class Restaurant
       @basket = []
       @bill = []
       @receipt = 0
-      @twillio = Twillio.new
+      @twillio = []
   end
 
   def select_dish(dish, quantity=1)
@@ -36,7 +36,6 @@ class Restaurant
 
   def send_text
     @twillio.message
-
   end
 
 end
