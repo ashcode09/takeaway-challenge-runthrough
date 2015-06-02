@@ -16,4 +16,9 @@ feature 'Takeaway' do
     expect(restaurant.basket).to eq([{'lasagne' => 10.0}])
   end
 
+  scenario 'Restuarant calculates basket total and shows customer bill' do
+    restaurant.select_dish('pizza', 2)
+    expect(restaurant.bill_total).to eq(23)
+  end
+
 end

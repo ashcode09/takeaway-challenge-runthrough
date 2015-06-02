@@ -1,5 +1,3 @@
-require_relative 'customer'
-
 class Restaurant
 
   attr_accessor  :basket
@@ -14,6 +12,7 @@ class Restaurant
                "gelato" => 18.20
             }
       @basket = []
+      @bill = []
   end
 
   def select_dish(dish, quantity=1)
@@ -22,4 +21,9 @@ class Restaurant
     end
   end
 
+  def bill_total
+    @bill = @basket.map { |x| x.values }.flatten.inject(:+)
+  end
+
 end
+

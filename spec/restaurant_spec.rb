@@ -20,4 +20,9 @@ describe Restaurant do
     expect(subject.basket).to eq([{'lasagne' => 10.0}, {'gelato' => 18.2}, {'gelato' => 18.2}])
   end
 
+  it 'can calculates basket total and shows customer bill' do
+    subject.select_dish('pizza', 2)
+    expect(subject.bill_total).to eq(23)
+  end
+
 end
